@@ -1,0 +1,63 @@
+alias: Google TV in Verbindung mit Smart Plug
+description: ""
+trigger:
+  - platform: device
+    type: turned_on
+    device_id: 74c030369c2c4f7339e75a6258530a42
+    entity_id: remote.brunos_google_tv
+    domain: remote
+    id: googletv-on
+  - platform: device
+    type: turned_off
+    device_id: 74c030369c2c4f7339e75a6258530a42
+    entity_id: remote.brunos_google_tv
+    domain: remote
+    id: googletv-off
+  - platform: device
+    type: turned_on
+    device_id: 3470f441568009a0250896f7ee0f1f6f
+    entity_id: switch.fernseher_outlet
+    domain: switch
+    id: tvplug-on
+  - platform: device
+    type: turned_off
+    device_id: 3470f441568009a0250896f7ee0f1f6f
+    entity_id: switch.fernseher_outlet
+    domain: switch
+    id: tvplug-off
+condition: []
+action:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id: googletv-on
+        sequence:
+          - service: switch.turn_on
+            data: {}
+            target:
+              entity_id: switch.fernseher_outlet
+      - conditions:
+          - condition: trigger
+            id: googletv-off
+        sequence:
+          - service: switch.turn_off
+            data: {}
+            target:
+              entity_id: switch.fernseher_outlet
+      - conditions:
+          - condition: trigger
+            id: tvplug-on
+        sequence:
+          - type: turn_on
+            device_id: 74c030369c2c4f7339e75a6258530a42
+            entity_id: remote.brunos_google_tv
+            domain: remote
+      - conditions:
+          - condition: trigger
+            id: tvplug-off
+        sequence:
+          - type: turn_off
+            device_id: 74c030369c2c4f7339e75a6258530a42
+            entity_id: remote.brunos_google_tv
+            domain: remote
+mode: single
