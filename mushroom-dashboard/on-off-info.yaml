@@ -1,0 +1,6 @@
+{% if is_state('switch.zimmerlicht', 'on') %}
+    Eingeschaltet
+  {% endif %}
+{% if is_state('switch.zimmerlicht', 'off') %}
+    Ausgeschaltet
+  {% endif %}

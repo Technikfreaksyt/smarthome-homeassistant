@@ -1,0 +1,10 @@
+{% set time = now().hour %}
+{% if (time >= 18) %}
+  Guten Abend {{user}}!
+{% elif (time >= 12) %}
+  Guten Nachmittag {{user}}!
+{% elif (time >= 5) %}
+  Guten Morgen {{user}}!
+{% else %}
+ Hallo {{user}}!
+{% endif %}
