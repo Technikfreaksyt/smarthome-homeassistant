@@ -1,0 +1,170 @@
+views:
+  - title: Home
+    cards:
+      - type: custom:mushroom-template-card
+        primary: |-
+          {% set time = now().hour %}
+          {% if (time >= 18) %}
+            Guten Abend {{user}}!
+          {% elif (time >= 12) %}
+            Guten Nachmittag {{user}}!
+          {% elif (time >= 5) %}
+            Guten Morgen {{user}}!
+          {% else %}
+           Hallo {{user}}!
+          {% endif %}
+        secondary: ""
+        icon: ""
+      - type: custom:mushroom-template-card
+        primary: 3D Drucker
+        secondary: ""
+        icon: mdi:printer-3d
+        layout: vertical
+        icon_color: blue
+        tap_action:
+          action: navigate
+          navigation_path: /dashboard-mushroom/1
+      - type: weather-forecast
+        entity: weather.forecast_home
+        forecast_type: daily
+      - type: custom:mushroom-template-card
+        primary: Licht
+        secondary: |-
+          {% if is_state('switch.zimmerlicht', 'on') %}
+              Eingeschaltet
+            {% endif %}
+          {% if is_state('switch.zimmerlicht', 'off') %}
+              Ausgeschaltet
+            {% endif %}
+        icon: mdi:lightbulb
+        icon_color: |-
+          {% if is_state('switch.zimmerlicht', 'on') %}
+              blue
+            {% endif %}
+        entity: update.home_assistant_core_update
+      - type: custom:mushroom-title-card
+        title: Schreibtisch
+        subtitle: ""
+      - type: custom:mushroom-template-card
+        primary: SETUP
+        secondary: |-
+          {% if is_state('switch.zimmerlicht', 'on') %}
+              Eingeschaltet
+            {% endif %}
+          {% if is_state('switch.zimmerlicht', 'off') %}
+              Ausgeschaltet
+            {% endif %}
+        icon: mdi:television
+        icon_color: |-
+          {% if is_state('switch.zimmerlicht', 'on') %}
+              blue
+            {% endif %}
+        entity: person.bruno
+      - type: custom:mushroom-title-card
+        title: Bett
+        subtitle: ""
+      - type: horizontal-stack
+        cards:
+          - type: custom:mushroom-template-card
+            primary: Bettlampe
+            secondary: |-
+              {% if is_state('switch.bettlampe_outlet', 'on') %}
+                Eingeschaltet
+              {% endif %}
+                  {% if is_state('switch.bettlampe_outlet', 'off') %}
+                Ausgeschaltet
+              {% endif %}
+            icon: mdi:lightbulb
+            icon_color: |2-
+                {% if is_state('switch.bettlampe_outlet', 'on') %}
+                blue
+              {% endif %}
+            entity: switch.bettlampe_outlet
+          - type: custom:mushroom-template-card
+            primary: Google TV
+            secondary: |-
+              {% if is_state('switch.bettlampe_outlet', 'on') %}
+                Eingeschaltet
+              {% endif %}
+                  {% if is_state('switch.bettlampe_outlet', 'off') %}
+                Ausgeschaltet
+              {% endif %}
+            icon: mdi:television
+            icon_color: |2-
+                {% if is_state('switch.bettlampe_outlet', 'on') %}
+                blue
+              {% endif %}
+            entity: switch.bettlampe_outlet
+      - type: custom:mushroom-media-player-card
+        entity: media_player.brunos_google_tv
+        use_media_info: false
+      - type: custom:mushroom-media-player-card
+        entity: media_player.brunos_nest_hub
+        use_media_info: false
+  - subview: true
+    badges: []
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: custom:mushroom-template-card
+            primary: Bettlampe
+            secondary: |-
+              {% if is_state('switch.bettlampe_outlet', 'on') %}
+                Eingeschaltet
+              {% endif %}
+                  {% if is_state('switch.bettlampe_outlet', 'off') %}
+                Ausgeschaltet
+              {% endif %}
+            icon: mdi:lightbulb
+            icon_color: |2-
+                {% if is_state('switch.bettlampe_outlet', 'on') %}
+                blue
+              {% endif %}
+            entity: switch.bettlampe_outlet
+          - type: custom:mushroom-template-card
+            primary: Bettlampe
+            secondary: |-
+              {% if is_state('switch.bettlampe_outlet', 'on') %}
+                Eingeschaltet
+              {% endif %}
+                  {% if is_state('switch.bettlampe_outlet', 'off') %}
+                Ausgeschaltet
+              {% endif %}
+            icon: mdi:lightbulb
+            icon_color: |2-
+                {% if is_state('switch.bettlampe_outlet', 'on') %}
+                blue
+              {% endif %}
+            entity: switch.bettlampe_outlet
+      - type: horizontal-stack
+        cards:
+          - type: custom:mushroom-template-card
+            primary: Bettlampe
+            secondary: |-
+              {% if is_state('switch.bettlampe_outlet', 'on') %}
+                Eingeschaltet
+              {% endif %}
+                  {% if is_state('switch.bettlampe_outlet', 'off') %}
+                Ausgeschaltet
+              {% endif %}
+            icon: mdi:lightbulb
+            icon_color: |2-
+                {% if is_state('switch.bettlampe_outlet', 'on') %}
+                blue
+              {% endif %}
+            entity: switch.bettlampe_outlet
+          - type: custom:mushroom-template-card
+            primary: Bettlampe
+            secondary: |-
+              {% if is_state('switch.bettlampe_outlet', 'on') %}
+                Eingeschaltet
+              {% endif %}
+                  {% if is_state('switch.bettlampe_outlet', 'off') %}
+                Ausgeschaltet
+              {% endif %}
+            icon: mdi:lightbulb
+            icon_color: |2-
+                {% if is_state('switch.bettlampe_outlet', 'on') %}
+                blue
+              {% endif %}
+            entity: switch.bettlampe_outlet
